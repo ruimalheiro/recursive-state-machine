@@ -50,6 +50,12 @@ const config = {
 };
 ```
 
+States can be defined as necessary and we can jump between states as needed. We cannot define states with the same name as the `terminateState`.
+
+Inside our errorHandler you need to handle the error and return the state we want to go to. If we don't return anything, the machine will terminate.
+
+Cleanup tasks are optional and don't need to return anything. They will always run on machine termination (regardless if it terminates in success or error state); E.g disconnecting from a database.
+
 The error handler is of the form:
 `({ currentState, taskName, error }) => { ... }`
 We can return states to change the behaviour of the machine example:
