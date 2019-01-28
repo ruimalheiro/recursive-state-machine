@@ -1,7 +1,7 @@
 {
-  "name": "state-machine",
+  "name": "node-recursive-state-machine",
   "version": "0.1.0",
-  "description": "",
+  "description": "A simple non blocking recursive state machine for node.js",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha test/**/*.spec.js"
@@ -10,8 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/ruimalheiro/state-machine.git"
   },
+  "keywords": ["node", "recursive", "state", "machine", "state-machine"],
   "author": "Rui Malheiro",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ruimalheiro/state-machine/issues"
   },

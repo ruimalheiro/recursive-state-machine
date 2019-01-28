@@ -1,6 +1,6 @@
 # state-machine
 
-A simple state machine for node.js. It allows infinite loops by respecting node's event loop.
+This library implements a simple non blocking recursive state machine for node.js. Multiple tasks can be defined for a specific state and multiple states can be defined as well. Tasks are called as asynchronous functions and are isolated from each other and result does not transit from task to task.
 
 ## Example of a configuration:
 
