@@ -10,7 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/ruimalheiro/state-machine.git"
   },
-  "keywords": ["node", "recursive", "state", "machine", "state-machine"],
+  "keywords": [
+    "node",
+    "recursive",
+    "state",
+    "machine",
+    "state-machine"
+  ],
   "author": "Rui Malheiro",
   "license": "MIT",
   "bugs": {
