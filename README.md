@@ -1,5 +1,7 @@
 # state-machine
 
+A simple state machine for node.js. It allows infinite loops by respecting node's event loop.
+
 ## Examples of configuration:
 
 ```
