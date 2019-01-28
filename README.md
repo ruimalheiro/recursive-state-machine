@@ -71,7 +71,13 @@ We can return states to change the behaviour of the machine example:
 }
 ```
 
+## Installation
+`npm install --save recursive-state-machine`
+
 ## Usage:
+`const { StateMachine } = require('recursive-state-machine');`
+or
+`import { StateMachine } from 'recursive-state-machine';`
 
 ```
 const stateMachine = StateMachine(config);
