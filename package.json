@@ -1,5 +1,5 @@
 {
-  "name": "node-recursive-state-machine",
+  "name": "recursive-state-machine",
   "version": "0.1.0",
   "description": "A simple non blocking recursive state machine for node.js",
   "main": "lib/index.js",
@@ -15,7 +15,8 @@
     "recursive",
     "state",
     "machine",
-    "state-machine"
+    "state-machine",
+    "statemachine",
   ],
   "author": "Rui Malheiro",
   "license": "MIT",

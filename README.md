@@ -1,6 +1,6 @@
 # state-machine
 
-This library implements a simple non blocking recursive state machine for node.js. Multiple tasks can be defined for a specific state and multiple states can be defined as well. Tasks are called as asynchronous functions and are isolated from each other and result does not transit from task to task.
+This library implements a simple non blocking recursive state machine for node.js. Multiple tasks can be defined for a specific state and multiple states can be defined as well. Tasks are called as asynchronous functions and are isolated from each other and result does not transit from task to task. This means you can have things like infinite loops!
 
 ## Example of a configuration:
 
