@@ -2,7 +2,7 @@
 
 A simple state machine for node.js. It allows infinite loops by respecting node's event loop.
 
-## Examples of configuration:
+## Example of a configuration:
 
 ```
 const config = {
@@ -54,7 +54,7 @@ States can be defined as necessary and we can jump between states as needed. We 
 
 Inside our errorHandler you need to handle the error and return the state we want to go to. If we don't return anything, the machine will terminate.
 
-Cleanup tasks are optional and don't need to return anything. They will always run on machine termination (regardless if it terminates in success or error state); E.g disconnecting from a database.
+Cleanup tasks are optional. They will always run on machine termination (regardless if it terminates in success or error state); E.g disconnecting from a database.
 
 The error handler is of the form:
 `({ currentState, taskName, error }) => { ... }`
