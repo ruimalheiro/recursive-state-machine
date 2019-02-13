@@ -61,4 +61,19 @@ describe('StateMachine error handling', () => {
         const stateMachine = StateMachine(machineConfig);
         expect(stateMachine.start()).to.eventually.be.equal(1).and.notify(done);
     });
+
+    it('should throw error if an exception is thrown from the error handler', done => {
+        const machineConfig = getMachineConfig();
+        machineConfig.states.S1.tasks = [ taskError, task ];
+        machineConfig.states.S2.tasks = [];
+        machineConfig.errorHandler = () => {
+            const a = {};
+            a.b.c = 3;
+            return 'S10';
+        };
+        const stateMachine = StateMachine(machineConfig);
+        expect(stateMachine.start()).to.eventually
+            .be.rejectedWith('Cannot set property \'c\' of undefined')
+            .notify(done);
+    });
 });
