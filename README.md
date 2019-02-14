@@ -1,6 +1,6 @@
 # recursive-state-machine
 
-This library implements a simple non blocking recursive state machine for node.js. Multiple tasks can be defined for a specific state and multiple states can be defined as well. Tasks are called as asynchronous functions and are isolated from each other and result does not transit from task to task. This means you can have things like infinite loops!
+This library implements a simple non blocking recursive state machine for node.js. Multiple tasks can be defined for a specific state and multiple states can be defined as well. Tasks are called as asynchronous functions and are isolated from each other and result does not transit from task to task. This means it is possible to have infinite loops and to other strategies for control flow.
 
 ## Example of a configuration:
 
@@ -54,6 +54,8 @@ States can be defined as necessary and we can jump between states as needed. We 
 
 Inside our errorHandler you need to handle the error and return the state we want to go to. If we don't return anything, the machine will terminate.
 
+The machine returns `0` when terminating in success and returns `1` when terminating in error (e.g if nothing is returned from the `errorHandler`). It can also throw an error if something is wrong inside the `errorHandler`.
+
 Cleanup tasks are optional. They will always run on machine termination (regardless if it terminates in success or error state); E.g disconnecting from a database.
 
 The error handler is of the form:
@@ -85,4 +87,17 @@ import { StateMachine } from 'recursive-state-machine';
 ```
 const stateMachine = StateMachine(config);
 stateMachine.start();
+```
+with more control:
+```
+(async () => {
+    const stateMachine = StateMachine(config);
+    
+    try {
+        let result = await stateMachine.start();
+        ...
+    } catch (err) {
+        ...
+    }
+})();
 ```

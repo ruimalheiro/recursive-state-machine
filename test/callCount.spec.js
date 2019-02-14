@@ -6,7 +6,9 @@ chai.use(require("chai-as-promised"));
 
 const expect = chai.expect;
 
-const { StateMachine } = require('../lib/index');
+const {
+    StateMachine
+} = require('../lib/index');
 
 const error = Error('ooops!');
 
@@ -14,7 +16,7 @@ let count = 0;
 
 let task1 = () => {};
 let task2 = () => {
-    if(count === 2) {
+    if (count === 2) {
         throw error;
     }
     count = count + 1;
@@ -23,7 +25,7 @@ let task2 = () => {
 let task3 = () => {};
 let cleanupTask1 = () => {};
 let cleanupTask2 = () => {};
-let errorHandler = ({ currentState, taskName, error }) => {
+let errorHandler = () => {
     return 'S3';
 };
 let machineConfig;
@@ -43,19 +45,43 @@ describe('StateMachine callCount', () => {
             terminateState: 'TERMINATE',
             states: {
                 S1: {
-                    tasks: [ { name: 'task1', task: task1 }, { name: 'task1', task: task1 } ],
+                    tasks: [{
+                        name: 'task1',
+                        task: task1
+                    }, {
+                        name: 'task1',
+                        task: task1
+                    }],
                     nextState: 'S2',
                 },
                 S2: {
-                    tasks: [ { name: 'task1', task: task1 }, { name: 'task2', task: task2 } ],
+                    tasks: [{
+                        name: 'task1',
+                        task: task1
+                    }, {
+                        name: 'task2',
+                        task: task2
+                    }],
                     nextState: 'S2',
                 },
                 S3: {
-                    tasks: [ { name: 'task1', task: task1 }, { name: 'task3', task: task3 } ],
+                    tasks: [{
+                        name: 'task1',
+                        task: task1
+                    }, {
+                        name: 'task3',
+                        task: task3
+                    }],
                     nextState: 'TERMINATE',
                 }
             },
-            cleanupTasks: [ { name: 'cleanupTask1', task: cleanupTask1 }, { name: 'cleanupTask2', task: cleanupTask2 } ],
+            cleanupTasks: [{
+                name: 'cleanupTask1',
+                task: cleanupTask1
+            }, {
+                name: 'cleanupTask2',
+                task: cleanupTask2
+            }],
         };
     });
 

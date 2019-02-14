@@ -1,12 +1,13 @@
 const chai = require("chai");
-const sinon = require("sinon");
 
 chai.use(require("sinon-chai"));
 chai.use(require("chai-as-promised"));
 
 const expect = chai.expect;
 
-const { StateMachine } = require('../lib/index');
+const {
+    StateMachine
+} = require('../lib/index');
 
 describe('StateMachine initialization', () => {
     it('should throw error if "initialSate" is missing', () => {
@@ -41,16 +42,20 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'FOO',
-            states: { FOO: {} },
+            states: {
+                FOO: {}
+            },
         };
         expect(() => StateMachine(testConfig)).to.throw(Error, 'State \'FOO\' is reserved for machine termination');
     });
-    
+
     it('should throw error if "tasks" is missing for state S1', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { S1: {} },
+            states: {
+                S1: {}
+            },
         };
         expect(() => StateMachine(testConfig)).to.throw(Error, 'Missing \'tasks\' property for state: S1');
     });
@@ -59,9 +64,9 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { 
+            states: {
                 S1: {
-                    tasks: [ {} ], 
+                    tasks: [{}],
                 },
             },
         };
@@ -72,9 +77,12 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { 
+            states: {
                 S1: {
-                    tasks: [ { name: 'name', task: () => {} } ],
+                    tasks: [{
+                        name: 'name',
+                        task: () => {}
+                    }],
                 },
             },
         };
@@ -85,9 +93,12 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { 
+            states: {
                 S1: {
-                    tasks: [ { name: 'name', task: () => {} } ],
+                    tasks: [{
+                        name: 'name',
+                        task: () => {}
+                    }],
                     nextState: 'S2',
                 },
             },
@@ -99,9 +110,12 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { 
+            states: {
                 S1: {
-                    tasks: [ { name: 'name', task: () => {} } ],
+                    tasks: [{
+                        name: 'name',
+                        task: () => {}
+                    }],
                     nextState: 'ST',
                 },
             },
@@ -113,9 +127,12 @@ describe('StateMachine initialization', () => {
         const testConfig = {
             initialState: 'S1',
             terminateState: 'ST',
-            states: { 
+            states: {
                 S1: {
-                    tasks: [ { name: 'name', task: () => {} } ],
+                    tasks: [{
+                        name: 'name',
+                        task: () => {}
+                    }],
                     nextState: 'ST',
                 },
             },
