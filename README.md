@@ -52,7 +52,7 @@ const config = {
 
 Multiple states can be defined and it is possible to jump between them. States cannot be defined with the same name as the `terminateState`.
 
-All errors thrown from the tasks will be handler by the `errorHandler`. The machine will resume in the state returned by the `errorHandler`. If nothing is returned, it terminates with result `1`.
+All errors thrown from the tasks will be handled by the `errorHandler`. The machine will resume in the state returned by the `errorHandler`. If nothing is returned, it terminates with result `1`.
 
 The machine returns `0` when terminating in success and returns `1` when terminating in error (e.g if nothing is returned from the `errorHandler`). It can also throw an error if something is wrong inside the `errorHandler`.
 
